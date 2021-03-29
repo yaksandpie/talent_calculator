@@ -1,0 +1,55 @@
+:root {
+  --font-stack: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --border-radius: 2px;
+  --talent-size: 58px;
+
+  /* Storing as custom properties to keep track of colors. */
+  --c-white: #fff;
+  --c-grey-alpha: #ccc1;
+  --c-lightgrey: #414143;
+  --c-grey: #313234;
+  --c-darkgrey: #1a1b1c;
+  --c-darkergrey: #202122;
+  --c-blue: #415c77;
+
+  /* Functional colors */
+  --c-border: var(--c-grey-alpha);
+  --c-appBackground: #0a131a;
+
+  /* Spirte coords */
+  --stack-x: 0;
+  --cutlery-x: 350px;
+  --cake-x: 300px;
+  --crown-x: 250px;
+  --boat-x: 200px;
+  --scuba-x: 150px;
+  --bolt-x: 100px;
+  --skull-x: 50px;
+}
+
+/* Setting font and color on body under the assumption these properties would inherit */
+body {
+  padding: 20px 0;
+  font-family: var(--font-stack);
+  color: var(--c-white);
+  background: var(--c-appBackground);
+}
+
+@media (min-width: 840px) {
+  body {
+    padding: 20px;
+  }
+}
+
+/* Utility functions to reduce simple rulesets */
+.width--100pct {
+  width: 100%;
+}
+
+.text--blue {
+  color: var(--c-blue);
+}
+
+.position--relative {
+  position: relative;
+}

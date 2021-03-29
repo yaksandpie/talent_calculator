@@ -1,0 +1,73 @@
+.container {
+  max-width: 600px;
+  padding: 20px 16px 60px;
+  border: 1px solid var(--c-border);
+  margin: auto;
+  border-radius: var(--border-radius);
+  background: url(./talent-calc-bg.png);
+}
+
+.title {
+  /*
+    Text is aligned center but I'm adding 16px on left/right
+    to ensure there is space while resizing the window (responsive)
+  */
+  padding: 12px 16px;
+  margin: 0 0 44px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  background: var(--c-border);
+  font-size: 24px;
+}
+
+.talentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+.talents {
+  display: flex;
+  align-items: center;
+  width: 250px;
+}
+
+.pointsContainer {
+  width: 200px;
+  padding: 20px 16px;
+  border: 1px solid var(--c-border);
+  margin: 0 64px 40px 80px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.pointsTitle {
+  color: var(--c-blue);
+}
+
+@media (min-width: 840px) {
+  .container {
+    max-width: 1200px;
+    padding-bottom: 20px;
+    margin: 0;
+  }
+
+  .title {
+    font-size: 32px;
+    margin: 0 0 88px;
+  }
+
+  .talentContainer {
+    flex-direction: row;
+  }
+
+  .talents {
+    display: block;
+    width: 100%;
+  }
+
+  .pointsContainer {
+    margin-bottom: 0;
+  }
+}
