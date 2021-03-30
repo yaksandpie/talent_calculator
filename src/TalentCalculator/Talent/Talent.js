@@ -1,14 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import cn from '../../utilities/cn';
+
 import styles from './Talent.module.css';
 
 
-const Talent = ({ treeId, name, isLast, isActive, actions }) => {
+const Talent = ({ treeId, name, isFirst, isActive, actions }) => {
   return (
-    <div className={!isLast ? styles.container : undefined}>
+    <div className={cn({
+      [styles.container]: !isFirst,
+      [styles.isActive]: isActive,
+    })}>
+      {!isFirst && (
+        <div className={styles.connector} aria-hidden />
+      )}
+
       <button
-        className={`${styles.talentButton} ${styles.icon}`}
+        className={cn({
+          [styles.talentButton]: true,
+          [styles.icon]: true,
+        })}
         style={{
           backgroundPositionX: `var(--${name}-x)`,
           backgroundPositionY: isActive ? '0' : '50px',
@@ -21,10 +33,6 @@ const Talent = ({ treeId, name, isLast, isActive, actions }) => {
           }
         }}
       />
-
-      {!isLast && (
-        <div className={styles.connector} aria-hidden />
-      )}
     </div>
   );
 };
@@ -32,7 +40,7 @@ const Talent = ({ treeId, name, isLast, isActive, actions }) => {
 Talent.propTypes = {
   treeId: PropTypes.number,
   name: PropTypes.string,
-  isLast: PropTypes.bool,
+  isFirst: PropTypes.bool,
   isActive: PropTypes.bool,
   actions: PropTypes.object,
 };

@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: var(--talent-size) 1fr;
+  grid-template-rows: 1fr var(--talent-size);
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -16,6 +16,12 @@
   cursor: pointer;
   background: url(./talent-icons-sprite.png);
   background-position-y: 50px;
+  transition: border-color 100ms ease-out;
+}
+
+.isActive .talentButton {
+  border-color: var(--c-brightblue);
+  box-shadow: 0 0 10px -0 var(--c-white-alpha);
 }
 
 .connector {
@@ -24,6 +30,15 @@
   border: 1px solid var(--c-border);
   margin: auto;
   background: var(--c-darkgrey);
+  transition: border-color 100ms ease-out,
+              background 100ms ease-out;
+}
+
+.isActive .connector {
+  border-color: var(--c-lightgrey);
+  background: var(--c-grey);
+  transition: border-color 100ms ease-in,
+              background 100ms ease-in;
 }
 
 .icon:hover {
@@ -34,12 +49,12 @@
 @media (min-width: 840px) {
   .container {
     grid-template-rows: auto;
-    grid-template-columns: var(--talent-size) 1fr;
+    grid-template-columns: 1fr var(--talent-size);
   }
 
   .connector {
     height: 16px;
-    width: auto;
+    width: 100%;
     margin: 0;
   }
 }

@@ -14,16 +14,16 @@ const TalentTree = ({ actions, points, tree }) => {
       <span className={styles.talentPathTitle}>{I18n.t(tree.name)}</span>
 
       <ul className={styles.talentsContainer}>
-        {tree.talents.map((talent, index, array) => {
-          const isLast = array.length - 1 === index;
+        {tree.talents.map((talent, index) => {
+          const isFirst = 0 === index;
           const isActive = points > index;
 
           return (
-            <li key={talent} className={!isLast ? 'width--100pct' : undefined}>
+            <li key={talent} className={!isFirst ? 'width--100pct' : undefined}>
               <Talent
                 name={talent}
                 isActive={isActive}
-                isLast={isLast}
+                isFirst={isFirst}
                 actions={actions}
                 treeId={tree.id}
               />

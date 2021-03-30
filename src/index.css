@@ -5,6 +5,7 @@
 
   /* Storing as custom properties to keep track of colors. */
   --c-white: #fff;
+  --c-white-alpha: #fff6;
   --c-grey-alpha: #ccc1;
   --c-lightgrey: #414143;
   --c-grey: #313234;
@@ -12,6 +13,7 @@
   --c-darkergrey: #202122;
   --c-darkestgrey: #07090c;
   --c-blue: #415c77;
+  --c-brightblue: #6dadee;
 
   /* Functional colors */
   --c-border: var(--c-grey-alpha);
