@@ -9,12 +9,23 @@ import styles from './TalentCalculator.module.css';
 
 
 const reducer = (state, action) => {
+  const getPointsSpent = (trees) => {
+    return trees.reduce((acc, item) => acc + item.points, 0);
+  }
+
   switch (action.type) {
     case 'addPoint': {
-      const { trees } = { ...state };
+      const { trees, pointCap } = { ...state };
       const currentTree = trees[action.id];
       const talentValue = currentTree.talents.indexOf(action.name) + 1;
-      currentTree.points = talentValue;
+
+      const pointsSpent = getPointsSpent(trees);
+      const pointsAvailable = pointCap - pointsSpent + currentTree.points;
+
+      if (pointsAvailable >= talentValue) {
+        currentTree.points = talentValue;
+      }
+
       return {
         ...state,
         trees,
