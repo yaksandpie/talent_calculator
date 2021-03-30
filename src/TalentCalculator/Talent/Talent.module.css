@@ -34,7 +34,14 @@
   left: -4px;
   width: 4px;
   height: calc(100% + 8px); /* offset for top/bottom borders */
-  background: linear-gradient(0deg, rgba(0,212,255,1) 0%, rgba(65,65,67,1) 50%, rgba(0,212,255,1) 51%, rgba(0,212,255,1) 100%);
+  background: var(--c-brightblue); /* Fall back */
+  background: linear-gradient(
+    0deg,
+    var(--c-brightblue) 0%,
+    var(--c-grey) 50%,
+    var(--c-brightblue) 51%,
+    var(--c-brightblue) 100%
+  );
 }
 
 .isActive .talentButton::after {
