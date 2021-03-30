@@ -1,5 +1,6 @@
 import React from 'react';
 
+import talentMockData from './talentMockData';
 import I18n from '../utilities/i18n';
 
 import TalentTree from './TalentTree/TalentTree';
@@ -7,24 +8,52 @@ import TalentTree from './TalentTree/TalentTree';
 import styles from './TalentCalculator.module.css';
 
 
-// Assumption: For reusability and API integration,
-// each tree is created by a data structure.
-// "talents" ideally would be a controlled list.
-const talentTreeData = [
-  {
-    id: 1,
-    name: I18n.t('talent_path_1'),
-    talents: ['stack', 'cutlery', 'cake', 'crown'],
-  },
-  {
-    id: 2,
-    name: I18n.t('talent_path_2'),
-    talents: ['boat', 'scuba', 'bolt', 'skull'],
-  },
-];
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'addPoint': {
+      const { trees } = { ...state };
+      const currentTree = trees[action.id];
+      const talentValue = currentTree.talents.indexOf(action.name) + 1;
+      currentTree.points = talentValue;
+      return {
+        ...state,
+        trees,
+      };
+    }
+    case 'removePoint': {
+      const { trees } = { ...state };
+      trees[action.id].points = trees[action.id].points - 1;
+      return {
+        ...state,
+        trees,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
+const initialState = {
+  trees: talentMockData.map((tree, index) => {
+    tree.id = index;
+    tree.points = 0;
+    return tree;
+  }),
+  pointCap: 6,
+};
 
 // The container to the talent calculator.
 const TalentCalculator = () => {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  const actions = {
+    addPoint: (name, id) => dispatch({ type: 'addPoint', name, id }),
+    removePoint: (name, id) => dispatch({ type: 'removePoint', name, id }),
+  };
+
+  // calculate how many points have been spent
+  const pointsSpent = state.trees.reduce((acc, item) => acc + item.points, 0);
+
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>
@@ -33,19 +62,23 @@ const TalentCalculator = () => {
 
       <section className={styles.talentContainer}>
         <div className={styles.talents}>
-          {talentTreeData?.map(({ id, name, talents}) => (
-            <TalentTree key={id} name={name} talents={talents} />
+          {state.trees.map(({ points, ...tree }) => (
+            <TalentTree
+              key={tree.id}
+              tree={tree}
+              actions={actions}
+              points={points}
+            />
           ))}
         </div>
 
         <div className={styles.pointsContainer}>
-          3/6
+          {pointsSpent}/{state.pointCap}
           <div className='text--blue'>
             {I18n.t('points_spent')}
           </div>
         </div>
       </section>
-
     </main>
   );
 };

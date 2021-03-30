@@ -40,6 +40,7 @@
   margin: 0 64px 40px 80px;
   text-align: center;
   font-size: 24px;
+  background: var(--c-darkestgrey);
 }
 
 .pointsTitle {

@@ -8,9 +8,7 @@ import './index.css';
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <TalentCalculator />
-  </React.StrictMode>,
+  <TalentCalculator />,
   document.getElementById('root'),
 );
 

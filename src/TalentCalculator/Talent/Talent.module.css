@@ -27,7 +27,8 @@
 }
 
 .icon:hover {
-  background-position-y: 0;
+  /* Using !important as it is overriding the inline style */
+  background-position-y: 0 !important;
 }
 
 @media (min-width: 840px) {
