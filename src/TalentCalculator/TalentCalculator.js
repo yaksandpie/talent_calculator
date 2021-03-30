@@ -31,7 +31,10 @@ const reducer = (state, action) => {
     }
     case 'removePoint': {
       const { trees } = { ...state };
-      trees[action.id].points = trees[action.id].points - 1;
+      const currentTree = trees[action.id];
+      // Basing points off of indexing.
+      const talentValue = currentTree.talents.indexOf(action.name) + 1;
+      trees[action.id].points = talentValue - 1;
       return {
         ...state,
         trees,
