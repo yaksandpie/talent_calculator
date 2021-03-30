@@ -1,6 +1,6 @@
 // based off concept of jed watson's classnames
 // creates a classname string given an object and
-// it's boolean values.
+// its boolean values.
 const cn = (object) => {
   let saved = [];
 
