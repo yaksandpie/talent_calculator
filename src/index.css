@@ -50,7 +50,3 @@ body {
 .text--blue {
   color: var(--c-blue);
 }
-
-.position--relative {
-  position: relative;
-}
