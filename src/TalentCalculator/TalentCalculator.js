@@ -72,7 +72,7 @@ const TalentCalculator = () => {
   const pointsSpent = state.getPointsSpent(state.trees);
 
   return (
-    <main className={styles.container}>
+    <main className={styles.container} data-testid='TalentCalculator'>
       <h1 className={styles.title}>
         {I18n.t('titanstar_legends_rune_mastery_loadout')}
       </h1>
@@ -90,7 +90,7 @@ const TalentCalculator = () => {
         </div>
 
         <div className={styles.pointsContainer}>
-          {pointsSpent}/{state.pointCap}
+          <span data-testid='TalentCalculator-points'>{pointsSpent}/{state.pointCap}</span>
           <div className='text--blue'>
             {pointsSpent === 1 ? I18n.t('point_spent') : I18n.t('points_spent')}
           </div>

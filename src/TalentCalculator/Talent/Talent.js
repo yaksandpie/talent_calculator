@@ -8,15 +8,16 @@ import styles from './Talent.module.css';
 
 const Talent = ({ treeId, name, isFirst, isActive, actions }) => {
   return (
-    <div className={cn({
+    <div data-testid='Talent' className={cn({
       [styles.container]: !isFirst,
       [styles.isActive]: isActive,
     })}>
       {!isFirst && (
-        <div className={styles.connector} aria-hidden />
+        <div data-testid='Talent-connector' className={styles.connector} aria-hidden />
       )}
 
       <button
+        data-testid='Talent-button'
         className={cn({
           [styles.talentButton]: true,
           [styles.icon]: true,

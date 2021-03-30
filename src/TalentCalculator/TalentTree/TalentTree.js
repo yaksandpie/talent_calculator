@@ -10,8 +10,10 @@ import styles from './TalentTree.module.css';
 
 const TalentTree = ({ actions, points, tree }) => {
   return (
-    <div className={styles.container}>
-      <span className={styles.talentPathTitle}>{I18n.t(tree.name)}</span>
+    <div className={styles.container} data-testid='TalentTree'>
+      <span className={styles.talentPathTitle} data-testid='TalentTree-title'>
+        {I18n.t(tree.name)}
+      </span>
 
       <ul className={styles.talentsContainer}>
         {tree.talents.map((talent, index) => {

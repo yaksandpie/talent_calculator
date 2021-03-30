@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const translations = {
+export const translations = {
   en: {
     point_spent: 'Point Spent',
     points_spent: 'Points Spent',
