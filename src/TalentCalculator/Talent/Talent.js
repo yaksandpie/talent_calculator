@@ -25,6 +25,17 @@ const Talent = ({ treeId, name, isFirst, isActive, actions }) => {
           backgroundPositionX: `var(--${name}-x)`,
           backgroundPositionY: isActive ? '0' : '50px',
         }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            // Prevents the click event from executing.
+            e.preventDefault();
+            if (!isActive) {
+              actions.addPoint(name, treeId);
+            } else {
+              actions.removePoint(name, treeId);
+            }
+          }
+        }}
         onClick={() => {
           // If item is not active, on left click, add point
           if (!isActive) {
