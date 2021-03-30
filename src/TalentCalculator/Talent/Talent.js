@@ -26,10 +26,16 @@ const Talent = ({ treeId, name, isFirst, isActive, actions }) => {
           backgroundPositionY: isActive ? '0' : '50px',
         }}
         onClick={() => {
+          // If item is not active, on left click, add point
+          if (!isActive) {
+            actions.addPoint(name, treeId);
+          }
+        }}
+        onContextMenu={(e) => {
+          // If item is active, on right click, remove point
+          e.preventDefault();
           if (isActive) {
             actions.removePoint(name, treeId);
-          } else {
-            actions.addPoint(name, treeId);
           }
         }}
       />

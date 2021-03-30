@@ -69,6 +69,8 @@ const TalentCalculator = () => {
     removePoint: (name, id) => dispatch({ type: 'removePoint', name, id }),
   };
 
+  const pointsSpent = state.getPointsSpent(state.trees);
+
   return (
     <main className={styles.container}>
       <h1 className={styles.title}>
@@ -88,9 +90,9 @@ const TalentCalculator = () => {
         </div>
 
         <div className={styles.pointsContainer}>
-          {state.getPointsSpent(state.trees)}/{state.pointCap}
+          {pointsSpent}/{state.pointCap}
           <div className='text--blue'>
-            {I18n.t('points_spent')}
+            {pointsSpent === 1 ? I18n.t('point_spent') : I18n.t('points_spent')}
           </div>
         </div>
       </section>
