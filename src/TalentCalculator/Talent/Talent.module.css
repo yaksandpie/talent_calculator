@@ -7,6 +7,7 @@
 }
 
 .talentButton {
+  position: relative;
   display: block;
   height: var(--talent-size);
   width: var(--talent-size);
@@ -21,7 +22,24 @@
 
 .isActive .talentButton {
   border-color: var(--c-brightblue);
-  box-shadow: 0 0 10px -0 var(--c-white-alpha);
+  box-shadow: 0 0 10px -0 var(--c-white-alpha),
+              inset 0 0 2px 2px var(--c-grey-alpha);
+}
+
+.isActive .talentButton::before,
+.isActive .talentButton::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 4px;
+  height: calc(100% + 8px); /* offset for top/bottom borders */
+  background: linear-gradient(0deg, rgba(0,212,255,1) 0%, rgba(65,65,67,1) 50%, rgba(0,212,255,1) 51%, rgba(0,212,255,1) 100%);
+}
+
+.isActive .talentButton::after {
+  left: auto;
+  right: -4px;
 }
 
 .connector {
